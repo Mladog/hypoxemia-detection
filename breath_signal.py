@@ -22,3 +22,4 @@ class BreathSignal():
 
     def trend():
         pass
+    
