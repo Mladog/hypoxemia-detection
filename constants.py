@@ -1,0 +1,4 @@
+LOCAL_EXAMINATION_DIRECTORY = './data'
+
+AIRFLOW_SIGNAL_EXT = 'airflow.csv'
+ECG_SIGNAL_EXT = 'ecg.csv'

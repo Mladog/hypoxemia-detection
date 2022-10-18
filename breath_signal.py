@@ -8,16 +8,16 @@ class BreathSignal():
     def fs_inst():
         pass
 
-    def TV_insp():
+    def tv_insp():
         pass
 
-    def TV_exp():
+    def tv_exp():
         pass
 
-    def DUR_insp():
+    def dur_insp():
         pass
 
-    def DUR_exp():
+    def dur_exp():
         pass
 
     def trend():
