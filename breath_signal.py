@@ -1,11 +1,19 @@
-
+import neurokit2 as nk
+import numpy as np
 
 class BreathSignal():
 
     def __init__(self, signal, fs= 500):
         self.freq = fs
-        self.signal = signal
-        
+        self.signal = nk.rsp_clean(signal, self.freq)
+        self.time = np.arange(start=0, stop=len(self.signal)/self.freq, step =1/self.freq)
+        self.get_peaks()
+
+    def get_peaks(self):
+        _, signal_peaks = nk.rsp_peaks(self.signal, self.freq)
+        self.expiration_onsets = signal_peaks['RSP_Peaks']
+        self.inspiration_onsets = signal_peaks['RSP_Troughs']
+
     def fs_inst(self):
         print('fs inst not implemented')
 

@@ -2,8 +2,9 @@
 # IMPORT REQUIRED LIBRARIES
 from examination import Examination
 
+import matplotlib.pyplot as plt
+import numpy as np 
 
-# %%
 # Get Examination
 exam_id = 1
 
@@ -11,17 +12,9 @@ exam = Examination(exam_id)
 
 airflow = exam.get_breath_signal()
 
-airflow.dur_exp()
-# %%
-import matplotlib.pyplot as plt
-import numpy as np 
+#airflow.dur_exp()
 
-def respiratory_onsets(airflow):
-    airflow_cumsum = np.cumsum(airflow.signal)
-    plt.plot(airflow_cumsum)
-    ons = airflow
-    return ons
-
-respiratory_onsets(airflow)
-
+plt.plot(airflow.time, airflow.signal)
+plt.plot(airflow.inspiration_onsets/airflow.freq, airflow.signal[airflow.inspiration_onsets], 'ro')
+plt.plot(airflow.expiration_onsets/airflow.freq, airflow.signal[airflow.expiration_onsets], 'go')
 # %%
