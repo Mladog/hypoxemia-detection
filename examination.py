@@ -6,12 +6,12 @@ import numpy as np
 
 class Examination():
 
-    def __init__(self, exam_id):
+    def __init__(self, exam_id, fs = 125):
         self.path = LOCAL_EXAMINATION_DIRECTORY
         self.exam_id = exam_id
+        self.fs = fs
 
     def get_breath_signal(self):
-        return BreathSignal(np.genfromtxt(f'{self.path}/{self.exam_id}{AIRFLOW_SIGNAL_EXT}', delimiter = ','))
+        signals = pd.read_csv(f'{self.path}/{self.exam_id}{AIRFLOW_SIGNAL_EXT}', delimiter = ',')
+        return BreathSignal(signals[[' RESP']], self.fs)
 
-    def get_ecg_signal(self):
-        return np.genfromtxt(f'{self.path}/{self.exam_id}{ECG_SIGNAL_EXT}', delimiter = ',')
