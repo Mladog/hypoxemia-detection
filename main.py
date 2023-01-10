@@ -52,15 +52,30 @@ plt.xlabel('Czas [s]')
 time_insp = resp_impedance.inspiration_onsets[1:-1]/resp_impedance.freq
 time_exp = resp_impedance.expiration_onsets[:-1]/resp_impedance.freq
 fig, ax = plt.subplots(2, sharex=True)
-fig.suptitle('Zmiany objetosci oddechowej w czasie')
+fig.suptitle('Objętość oddechowa')
 ax[0].plot(time_insp, np.concatenate(resp_impedance.insp_depth, 0))
-ax[0].set_title('zmiany podczas wdechu')
+ax[0].set_title('Objętość podczas wdechu')
 ax[0].set_xlabel('czas [s]')
-ax[0].set_ylabel('objetosc oddechowa')
+ax[0].set_ylabel('objetość oddechowa')
 
 ax[1].plot(time_exp, np.concatenate(resp_impedance.exp_depth, 0))
-ax[1].set_title('zmiany podczas wydechu')
+ax[1].set_title('Objętość podczas wydechu')
 ax[1].set_xlabel('czas [s]')
-ax[1].set_ylabel('objetosc oddechowa')
+ax[1].set_ylabel('objetość oddechowa')
 #resp_impedance.exp_depth
+# %%
+v = np.diff(np.concatenate(resp_impedance.exp_depth, 0))
+u = np.diff(np.concatenate(resp_impedance.insp_depth, 0))
+
+fig, ax = plt.subplots(2, sharex=True)
+fig.suptitle('Zmiany objetosci oddechowej w czasie')
+ax[0].plot(time_insp[:-1], u)
+ax[0].set_title('zmiany objętości podczas wdechu')
+ax[0].set_xlabel('czas [s]')
+ax[0].set_ylabel('zmiana objetosci oddechowej')
+
+ax[1].plot(time_exp[:-1], v)
+ax[1].set_title('zmiany objętości podczas wydechu')
+ax[1].set_xlabel('czas [s]')
+ax[1].set_ylabel('zmiana objetosci oddechowej')
 # %%
