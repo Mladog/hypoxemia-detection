@@ -11,6 +11,8 @@ class BreathSignal():
         # piatego rzedu o czestotliwosci odciecia 2Hz
         self.signal = nk.rsp_clean(signal, self.freq)
         self.signal_raw = np.array(signal)
+        #self.signal_diff = np.diff(signal)
+        #self.signal_diff_clean = nk.rsp_clean(self.signal_diff, self.freq)
         # wektor czasu
         self.time = np.arange(start=0, stop=len(self.signal)/self.freq, step =1/self.freq)
         # wyznaczenie ekstremow sygnalu

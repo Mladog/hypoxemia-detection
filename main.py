@@ -18,6 +18,12 @@ signal_raw = np.array(signals[" RESP"])"""
 
 resp_impedance = exam.get_breath_signal()
 resp_impedance_short = BreathSignal(resp_impedance.signal[:125*60])
+
+signal_diff = np.diff(resp_impedance_short.signal_raw)
+signal_diff_clean = nk.rsp_clean(signal_diff, resp_impedance_short.freq)
+_, signal_peaks = nk.rsp_peaks(signal_diff_clean, resp_impedance_short.freq)
+diff_expiration_onsets = signal_peaks['RSP_Peaks']
+diff_inspiration_onsets = signal_peaks['RSP_Troughs']
 # %%
 
 plt.plot(resp_impedance_short.time, resp_impedance_short.signal,
@@ -32,6 +38,32 @@ plt.legend()
 plt.ylabel('Impedancja oddechowa')
 plt.xlabel('Czas [s]')
 plt.title('Wyznaczone początki faz oddechowych')
+
+# %%
+from scipy.signal import savgol_filter
+y_smooth = savgol_filter(resp_impedance_short.signal_raw, 51, 11)
+yprime = np.diff(y_smooth)
+max_val = max(abs(yprime))*0.1
+
+x = [i for i, e in enumerate(yprime) if abs(e) < max_val]
+
+fig, ax = plt.subplots(2, sharex=True)
+fig.suptitle('Impedancja i różniczka')
+ax[0].plot(resp_impedance_short.time, y_smooth)
+ax[0].set_title('Impedancja')
+ax[0].set_xlabel('czas [s]')
+ax[0].set_ylabel('Wartość impedancji')
+ax[0].plot(resp_impedance_short.time[x], yprime[x], 'ro')
+
+
+ax[1].plot(resp_impedance_short.time[1:], yprime)
+ax[1].set_title('Różniczka')
+ax[1].set_xlabel('czas [s]')
+ax[1].set_ylabel('Wartość różniczki')
+# %%
+resp_impedance_no_zeros = resp_impedance_short.signal[x]
+resp_impedance_no_zeros = list(set(resp_impedance_short.signal) - set(resp_impedance_no_zeros))
+
 # %%
 limit = len(resp_impedance_short.signal) - int(resp_impedance_short.signal/25) - 25
 moving_averages = [sum(resp_impedance_short.signal[i:i+25])/25 for i in range(int(len(resp_impedance_short.signal)/25))]
