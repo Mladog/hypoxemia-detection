@@ -43,16 +43,16 @@ plt.title('Wyznaczone początki faz oddechowych')
 from scipy.signal import medfilt
 import matplotlib.transforms as mtransforms
 
-y_smooth = medfilt(resp_impedance_short.signal_raw, 221)
+y_smooth = medfilt(resp_impedance_short.signal_raw, 121)
 yprime = np.diff(y_smooth)
-max_val = max(abs(yprime))*0.1
+max_val = max(abs(yprime))*0.05
 pause = abs(yprime) < max_val
 pause = [1 if p == True else 0 for p in pause]
 pause = medfilt(pause, 101)
 
 x = [i for i, e in enumerate(yprime) if abs(e) < max_val]
 
-fig, ax = plt.subplots(3, sharex=True)
+fig, ax = plt.subplots(2, sharex=True)
 fig.suptitle('Impedancja i różniczka')
 trans = mtransforms.blended_transform_factory(ax[0].transData, ax[0].transAxes)
 ax[0].plot(resp_impedance_short.time, resp_impedance_short.signal_raw)
@@ -62,14 +62,10 @@ ax[0].set_ylabel('Wartość impedancji')
 ax[0].fill_between(resp_impedance_short.time[:-1], 0, 1, where= pause,
                 facecolor='green', alpha=0.5, transform=trans)
 
-ax[1].plot(resp_impedance_short.time, y_smooth)
-ax[1].set_title('Impedancja wygladzona')
-ax[1].set_ylabel('Wartość impedancji')
-
-ax[2].plot(resp_impedance_short.time[1:], yprime)
-ax[2].set_title('Różniczka')
-ax[2].set_xlabel('czas [s]')
-ax[2].set_ylabel('Wartość różniczki')
+ax[1].plot(resp_impedance_short.time[1:], yprime)
+ax[1].set_title('Różniczka')
+ax[1].set_xlabel('czas [s]')
+ax[1].set_ylabel('Wartość różniczki')
 # %%
 resp_impedance_no_zeros = resp_impedance_short.signal[x]
 resp_impedance_no_zeros = list(set(resp_impedance_short.signal) - set(resp_impedance_no_zeros))
