@@ -1,0 +1,9 @@
+{
+    "file_number": "090",
+    "start_warmup_marker": 2,
+    "stop_warmup_marker": 3,
+    "start_exercise_marker": 4,
+    "stop_exercise_marker": 5,
+    "sex": "F",
+    "electrode_change": 1
+}

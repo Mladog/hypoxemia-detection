@@ -16,7 +16,6 @@ exam = Examination(exam_ids[1])
 # %%
 
 resp_impedance = exam.get_breath_signal()
-resp_impedance = exam.get_breath_signal()
 resp_impedance_short = BreathSignal(resp_impedance.signal[-125*60:])
 
 signal_diff = np.diff(resp_impedance_short.signal_raw)
