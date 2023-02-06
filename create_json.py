@@ -12,6 +12,7 @@ dictionary = {
     "start_exercise_marker": 3, #rozpoczecie proby wysikowej
     "stop_exercise_marker": 4, #koniec proby wysilkowej
     "sex": "M", #plec
+    "start_power": 90, #moc poczatkowa [Watt]
 }
 
 # serializacja json

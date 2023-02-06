@@ -5,5 +5,6 @@
     "start_exercise_marker": 3,
     "stop_exercise_marker": 4,
     "sex": "F",
+    "start_power": 90,
     "baseline": 1
 }

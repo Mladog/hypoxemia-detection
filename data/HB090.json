@@ -5,5 +5,7 @@
     "start_exercise_marker": 4,
     "stop_exercise_marker": 5,
     "sex": "F",
+    "start_power": 70,
     "electrode_change": 1
+    
 }
