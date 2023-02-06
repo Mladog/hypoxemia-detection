@@ -1,3 +1,3 @@
 LOCAL_EXAMINATION_DIRECTORY = './data'
 
-AIRFLOW_SIGNAL_EXT = '_Signals.csv'
+AIRFLOW_SIGNAL_EXT = '.csv'
