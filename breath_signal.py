@@ -4,17 +4,15 @@ import numpy as np
 # klasa BreathSignal zawierajaca wszystkie metody i atrybuty dotyczace analizy 
 # sygnalu oddechowego pochodzacego z pneumonitora impedancyjnego
 class BreathSignal():
-    def __init__(self, signal, fs= 125):
+    def __init__(self, signal, fs=250):
         # ustalenie czestotliwosci probkowania sygnalu
         self.freq = fs
         # sygnal oddechowy poddany filtracji filtrem dolnoprzepustowym IIR Butterwortha 
         # piatego rzedu o czestotliwosci odciecia 2Hz
         self.signal = nk.rsp_clean(signal, self.freq)
         self.signal_raw = np.array(signal)
-        #self.signal_diff = np.diff(signal)
-        #self.signal_diff_clean = nk.rsp_clean(self.signal_diff, self.freq)
         # wektor czasu
-        self.time = np.arange(start=0, stop=len(self.signal)/self.freq, step =1/self.freq)
+        self.time = np.arange(start=0, stop=len(self.signal)/self.freq, step=1/self.freq)
         # wyznaczenie ekstremow sygnalu
         self.get_peaks()
         # wyznaczenie czestotliwosci chwilowej

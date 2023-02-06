@@ -1,3 +1,6 @@
 LOCAL_EXAMINATION_DIRECTORY = './data'
 
-AIRFLOW_SIGNAL_EXT = '.csv'
+COMS_SIGNAL_EXT = '.csv'
+PHYSIONET_SIGNAL_EXT = '_Signals.csv'
+
+JSON_EXT =".json"

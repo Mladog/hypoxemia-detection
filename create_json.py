@@ -1,6 +1,23 @@
-# %%
 #plik służący uzupełnieniu informacji o badaniu
+# %% ZALADOWANIE ODPOWIEDNICH BIBLIOTEK
+from examination import Examination
+import matplotlib.pyplot as plt
 import json
+
+
+"""
+TODO:
+zmiana sekund na numer probki
+"""
+
+# %% WIZUALIZACJA MARKEROW
+exam_ids = ['HB086', 'HB090', 'HB091']
+exam = Examination(exam_ids[2])
+
+plt.plot(exam.signals[["MARKER"]])
+
+t = exam.signals['TIME'].loc[exam.signals['MARKER'] == 1]
+# %% UZUPELNIENIE JSN
 
 number = ""
 

@@ -1,10 +1,10 @@
 {
     "file_number": "091",
-    "start_warmup_marker": 2,
-    "stop_warmup_marker": 3,
-    "start_exercise_marker": 3,
-    "stop_exercise_marker": 4,
+    "start_warmup_marker": 573.96,
+    "stop_warmup_marker": 664.82,
+    "start_exercise_marker": 664.82,
+    "stop_exercise_marker": 1294.1,
     "sex": "F",
     "start_power": 90,
-    "baseline": 1
+    "baseline": 320.11
 }

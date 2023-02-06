@@ -1,11 +1,11 @@
 {
     "file_number": "090",
-    "start_warmup_marker": 2,
-    "stop_warmup_marker": 3,
-    "start_exercise_marker": 4,
-    "stop_exercise_marker": 5,
+    "start_warmup_marker": 595.56,
+    "stop_warmup_marker": 775,
+    "start_exercise_marker": 884.97,
+    "stop_exercise_marker": 1222.6,
     "sex": "F",
     "start_power": 70,
-    "electrode_change": 1
+    "electrode_change": 336.2
     
 }
