@@ -1,9 +1,9 @@
 {
     "file_number": "086",
-    "start_warmup_marker": 352.96,
-    "stop_warmup_marker": 407.64,
-    "start_exercise_marker": 407.64,
-    "stop_exercise_marker": 906.8,
+    "start_warmup_marker": 81938,
+    "stop_warmup_marker": 94634,
+    "start_exercise_marker": 94634,
+    "stop_exercise_marker": 210517,
     "sex": "F",
     "start_power": 80
 }
